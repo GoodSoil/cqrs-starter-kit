@@ -31,7 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +47,10 @@
     <Compile Include="SomethingTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Edument.CQRS.BDDInfrastructure\Edument.CQRS.BDDInfrastructure.csproj">
+      <Project>{c8613ba7-a8dc-4f99-baad-2a2b44a16d47}</Project>
+      <Name>Edument.CQRS.BDDInfrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Edument.CQRS\Edument.CQRS.csproj">
       <Project>{D2BAB57D-225D-4F4C-9410-ED39495A8FE0}</Project>
       <Name>Edument.CQRS</Name>
@@ -57,6 +63,12 @@
       <Project>{42FE290D-7A80-451B-AC4F-A7B34B3B3D3B}</Project>
       <Name>YourDomain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
