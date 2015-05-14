@@ -7,7 +7,7 @@ using YourDomain.Something;
 using Edument.CQRS;
 using Events.Something;
 
-namespace YourDomainTests
+namespace YourDomainTests.NUnit
 {
     [TestFixture]
     public class SomethingTests : BDDTest<SomethingAggregate>
