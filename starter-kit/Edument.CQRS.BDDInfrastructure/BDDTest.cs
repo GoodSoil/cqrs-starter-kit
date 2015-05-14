@@ -25,12 +25,9 @@ namespace Edument.CQRS
         private FailDelegate AssertFail;
         private PassDelegate AssertPass;
 
-        public void BDDTestSetup(AreEqualDelegate assertAreEqual, FailDelegate assertFail, PassDelegate assertPass)
+        public void BDDTestSetup()
         {
             sut = new TAggregate();
-            AssertAreEqual = assertAreEqual;
-            AssertFail = assertFail;
-            AssertPass = assertPass;
         }
 
         protected void Test(IEnumerable given, Func<TAggregate, object> when, Action<object> then)
