@@ -9,6 +9,9 @@ using System.Xml.Serialization;
 
 namespace Edument.CQRS
 {
+    public delegate void AreEqualDelegate(object expected, object actual);
+    public delegate void FailDelegate(string message);
+    public delegate void PassDelegate(string message);
     /// <summary>
     /// Provides infrastructure for a set of tests on a given aggregate.
     /// </summary>
@@ -16,20 +19,28 @@ namespace Edument.CQRS
     public class BDDTest<TAggregate>
         where TAggregate : Aggregate, new()
     {
-        public delegate void AreEqualDelegate(object expected, object actual);
-        public delegate void FailDelegate(string message);
-        public delegate void PassDelegate(string message);
 
         private TAggregate sut;
         private AreEqualDelegate AssertAreEqual;
         private FailDelegate AssertFail;
         private PassDelegate AssertPass;
 
+        /// <summary>
+        /// This constructor is most compatible with NUnit
+        /// </summary>
+        /// <param name="assertAreEqual"></param>
+        /// <param name="assertFail"></param>
+        /// <param name="assertPass"></param>
         public BDDTest(AreEqualDelegate assertAreEqual, FailDelegate assertFail, PassDelegate assertPass)
         {
             AssertAreEqual = assertAreEqual;
             AssertFail = assertFail;
             AssertPass = assertPass;
+        }
+
+        public BDDTest(AreEqualDelegate assertAreEqual, FailDelegate assertFail)
+            : this(assertAreEqual, assertFail, delegate { return; })
+        {
         }
 
         public virtual void BDDTestSetup()
