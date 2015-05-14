@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SomethingTests.cs" />
+    <Compile Include="NUnit\SomethingTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Edument.CQRS.BDDInfrastructure\Edument.CQRS.BDDInfrastructure.csproj">
