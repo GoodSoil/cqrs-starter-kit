@@ -25,7 +25,14 @@ namespace Edument.CQRS
         private FailDelegate AssertFail;
         private PassDelegate AssertPass;
 
-        public void BDDTestSetup()
+        public BDDTest(AreEqualDelegate assertAreEqual, FailDelegate assertFail, PassDelegate assertPass)
+        {
+            AssertAreEqual = assertAreEqual;
+            AssertFail = assertFail;
+            AssertPass = assertPass;
+        }
+
+        public virtual void BDDTestSetup()
         {
             sut = new TAggregate();
         }
