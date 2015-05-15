@@ -41,13 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tab\CloseTab.cs" />
+    <Compile Include="Commands\CloseTab.cs" />
     <Compile Include="Tab\Exceptions.cs" />
-    <Compile Include="Tab\MarkDrinksServed.cs" />
-    <Compile Include="Tab\MarkFoodPrepared.cs" />
-    <Compile Include="Tab\OpenTab.cs" />
-    <Compile Include="Tab\PlaceOrder.cs" />
-    <Compile Include="Tab\MarkFoodServed.cs" />
+    <Compile Include="Commands\MarkDrinksServed.cs" />
+    <Compile Include="Commands\MarkFoodPrepared.cs" />
+    <Compile Include="Commands\OpenTab.cs" />
+    <Compile Include="Commands\PlaceOrder.cs" />
+    <Compile Include="Commands\MarkFoodServed.cs" />
     <Compile Include="Tab\TabAggregate.cs" />
   </ItemGroup>
   <ItemGroup>

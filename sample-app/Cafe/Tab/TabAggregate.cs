@@ -29,6 +29,7 @@ namespace Cafe.Tab
         private bool open;
         private decimal servedItemsValue;
 
+        #region Command Handlers
         public IEnumerable Handle(OpenTab c)
         {
             yield return new TabOpened
@@ -114,7 +115,9 @@ namespace Cafe.Tab
                 TipValue = c.AmountPaid - servedItemsValue
             };
         }
+        #endregion
 
+        #region Private Helper Methods
         private bool AreDrinksOutstanding(List<int> menuNumbers)
         {
             return AreAllInList(want: menuNumbers, have: outstandingDrinks);
@@ -145,7 +148,9 @@ namespace Cafe.Tab
         {
             return outstandingDrinks.Any() || outstandingFood.Any() || preparedFood.Any();
         }
+        #endregion
 
+        #region Event Handlers
         public void Apply(TabOpened e)
         {
             open = true;
@@ -195,5 +200,6 @@ namespace Cafe.Tab
         {
             open = false;
         }
+        #endregion
     }
 }

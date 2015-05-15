@@ -53,6 +53,7 @@ namespace CafeReadModels
         private Dictionary<Guid, Tab> todoByTab =
             new Dictionary<Guid,Tab>();
 
+        #region IOpenTabQueries Implementations
         public List<int> ActiveTableNumbers()
         {
             lock (todoByTab)
@@ -116,6 +117,7 @@ namespace CafeReadModels
                     HasUnservedItems = tab.Value.InPreparation.Any() || tab.Value.ToServe.Any()
                 };
         }
+        #endregion
 
         private List<TabItem> CopyItems(Tab tableTodo, Func<Tab, List<TabItem>> selector)
         {
@@ -123,6 +125,7 @@ namespace CafeReadModels
                 return new List<TabItem>(selector(tableTodo));
         }
 
+        #region Event Handlers
         public void Handle(TabOpened e)
         {
             lock (todoByTab)
@@ -180,7 +183,9 @@ namespace CafeReadModels
             lock (todoByTab)
                 todoByTab.Remove(e.Id);
         }
+        #endregion
 
+        #region Private Event Handler Helper Methods
         private Tab getTab(Guid id)
         {
             lock (todoByTab)
@@ -210,5 +215,6 @@ namespace CafeReadModels
                 }
             }
         }
+        #endregion
     }
 }
