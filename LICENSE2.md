@@ -1,6 +1,6 @@
-This project is a derivitive of the Edument Starter Kit (see [Edmunent's License](LICENSE)).
+> This project is a derivitive of the Edument Starter Kit (see [Edmunent's License](LICENSE)).
 
-The MIT License (MIT)
+# The MIT License (MIT)
 
 Copyright (c) 2015 GoodSoil
 
