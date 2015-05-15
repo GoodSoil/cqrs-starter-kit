@@ -6,10 +6,12 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml.Serialization;
-using NUnit.Framework;
 
 namespace Edument.CQRS
 {
+    public delegate void AreEqualDelegate(object expected, object actual);
+    public delegate void FailDelegate(string message);
+    public delegate void PassDelegate(string message);
     /// <summary>
     /// Provides infrastructure for a set of tests on a given aggregate.
     /// </summary>
@@ -17,10 +19,31 @@ namespace Edument.CQRS
     public class BDDTest<TAggregate>
         where TAggregate : Aggregate, new()
     {
-        private TAggregate sut;
 
-        [SetUp]
-        public void BDDTestSetup()
+        private TAggregate sut;
+        private AreEqualDelegate AssertAreEqual;
+        private FailDelegate AssertFail;
+        private PassDelegate AssertPass;
+
+        /// <summary>
+        /// This constructor is most compatible with NUnit
+        /// </summary>
+        /// <param name="assertAreEqual"></param>
+        /// <param name="assertFail"></param>
+        /// <param name="assertPass"></param>
+        public BDDTest(AreEqualDelegate assertAreEqual, FailDelegate assertFail, PassDelegate assertPass)
+        {
+            AssertAreEqual = assertAreEqual;
+            AssertFail = assertFail;
+            AssertPass = assertPass;
+        }
+
+        public BDDTest(AreEqualDelegate assertAreEqual, FailDelegate assertFail)
+            : this(assertAreEqual, assertFail, delegate { return; })
+        {
+        }
+
+        public virtual void BDDTestSetup()
         {
             sut = new TAggregate();
         }
@@ -60,23 +83,23 @@ namespace Edument.CQRS
                     if (gotEvents.Length == expectedEvents.Length)
                         for (var i = 0; i < gotEvents.Length; i++)
                             if (gotEvents[i].GetType() == expectedEvents[i].GetType())
-                                Assert.AreEqual(Serialize(expectedEvents[i]), Serialize(gotEvents[i]));
+                                AssertAreEqual(Serialize(expectedEvents[i]), Serialize(gotEvents[i]));
                             else
-                                Assert.Fail(string.Format(
+                                AssertFail(string.Format(
                                     "Incorrect event in results; expected a {0} but got a {1}",
                                     expectedEvents[i].GetType().Name, gotEvents[i].GetType().Name));
                     else if (gotEvents.Length < expectedEvents.Length)
-                        Assert.Fail(string.Format("Expected event(s) missing: {0}",
+                        AssertFail(string.Format("Expected event(s) missing: {0}",
                             string.Join(", ", EventDiff(expectedEvents, gotEvents))));
                     else
-                        Assert.Fail(string.Format("Unexpected event(s) emitted: {0}",
+                        AssertFail(string.Format("Unexpected event(s) emitted: {0}",
                             string.Join(", ", EventDiff(gotEvents, expectedEvents))));
                 }
                 else if (got is CommandHandlerNotDefiendException)
-                    Assert.Fail((got as Exception).Message);
+                    AssertFail((got as Exception).Message);
                 else
-                    Assert.Fail("Expected events, but got exception {0}",
-                        got.GetType().Name);
+                    AssertFail(string.Format("Expected events, but got exception {0}",
+                        got.GetType().Name));
             };
         }
 
@@ -93,15 +116,15 @@ namespace Edument.CQRS
             return got =>
             {
                 if (got is TException)
-                    Assert.Pass("Got correct exception type");
+                    AssertPass("Got correct exception type");
                 else if (got is CommandHandlerNotDefiendException)
-                    Assert.Fail((got as Exception).Message);
+                    AssertFail((got as Exception).Message);
                 else if (got is Exception)
-                    Assert.Fail(string.Format(
+                    AssertFail(string.Format(
                         "Expected exception {0}, but got exception {1}",
                         typeof(TException).Name, got.GetType().Name));
                 else
-                    Assert.Fail(string.Format(
+                    AssertFail(string.Format(
                         "Expected exception {0}, but got event result",
                         typeof(TException).Name));
             };

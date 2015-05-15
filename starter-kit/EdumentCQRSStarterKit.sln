@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourDomain", "YourDomain\Yo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourDomainTests", "YourDomainTests\YourDomainTests.csproj", "{4306B621-323B-4574-BFBF-2D002491AE1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edument.CQRS.BDDInfrastructure", "Edument.CQRS.BDDInfrastructure\Edument.CQRS.BDDInfrastructure.csproj", "{C8613BA7-A8DC-4F99-BAAD-2A2B44A16D47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{4306B621-323B-4574-BFBF-2D002491AE1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4306B621-323B-4574-BFBF-2D002491AE1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4306B621-323B-4574-BFBF-2D002491AE1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8613BA7-A8DC-4F99-BAAD-2A2B44A16D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8613BA7-A8DC-4F99-BAAD-2A2B44A16D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8613BA7-A8DC-4F99-BAAD-2A2B44A16D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8613BA7-A8DC-4F99-BAAD-2A2B44A16D47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

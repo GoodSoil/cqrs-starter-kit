@@ -7,16 +7,21 @@ using YourDomain.Something;
 using Edument.CQRS;
 using Events.Something;
 
-namespace YourDomainTests
+namespace YourDomainTests.NUnit
 {
     [TestFixture]
     public class SomethingTests : BDDTest<SomethingAggregate>
     {
+        public SomethingTests() : base(Assert.AreEqual, Assert.Fail, Assert.Pass)
+        {
+        }
+
         private Guid testId;
 
         [SetUp]
-        public void Setup()
+        public void Setup() 
         {
+            BDDTestSetup();
             testId = Guid.NewGuid();
         }
 
