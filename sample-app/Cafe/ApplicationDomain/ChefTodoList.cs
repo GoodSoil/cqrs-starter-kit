@@ -7,7 +7,7 @@ using Edument.CQRS;
 
 namespace CafeReadModels
 {
-    public class ChefTodoList : IChefTodoListQueries,
+    internal class ChefTodoList : IChefTodoListQueries,
         ISubscribeTo<FoodOrdered>,
         ISubscribeTo<FoodPrepared>
     {

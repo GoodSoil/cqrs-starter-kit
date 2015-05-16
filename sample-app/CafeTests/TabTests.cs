@@ -10,7 +10,7 @@ using Events.Cafe;
 namespace CafeTests
 {
     [TestFixture]
-    public class TabTests : BDDTest<TabAggregate>
+    internal class TabTests : BDDTest<TabAggregate>
     {
         private Guid testId;
         private int testTable;

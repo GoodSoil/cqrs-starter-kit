@@ -7,7 +7,7 @@ using Edument.CQRS;
 
 namespace CafeReadModels
 {
-    public class OpenTabs : IOpenTabQueries,
+    internal class OpenTabs : IOpenTabQueries,
         ISubscribeTo<TabOpened>,
         ISubscribeTo<DrinksOrdered>,
         ISubscribeTo<FoodOrdered>,

@@ -8,7 +8,7 @@ using Events.Cafe;
 
 namespace Cafe.Tab
 {
-    public class TabAggregate : Aggregate,
+    internal class TabAggregate : Aggregate,
         IHandleCommand<OpenTab>,
         IHandleCommand<PlaceOrder>,
         IHandleCommand<MarkDrinksServed>,
