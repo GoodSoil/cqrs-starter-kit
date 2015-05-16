@@ -19,7 +19,7 @@ namespace YourDomainTests.NUnit
         private Guid testId;
 
         [SetUp]
-        public void Setup() 
+        public void Setup()
         {
             BDDTestSetup();
             testId = Guid.NewGuid();
