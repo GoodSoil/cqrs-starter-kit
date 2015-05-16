@@ -20,9 +20,12 @@ namespace CafeTests
         private OrderedItem testFood1;
         private OrderedItem testFood2;
 
+        public TabTests() : base(Assert.AreEqual, Assert.Fail, Assert.Pass){ }
+
         [SetUp]
         public void Setup()
         {
+            BDDTestSetup();
             testId = Guid.NewGuid();
             testTable = 42;
             testWaiter = "Derek";

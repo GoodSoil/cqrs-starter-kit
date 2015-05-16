@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Edument.CQRS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoodSoil.CQRS.0.1.0\lib\Edument.CQRS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,16 +55,14 @@
     <Compile Include="Tab\TabAggregate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Edument.CQRS\Edument.CQRS.csproj">
-      <Project>{D2BAB57D-225D-4F4C-9410-ED39495A8FE0}</Project>
-      <Name>Edument.CQRS</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Events\Events.csproj">
       <Project>{36635EE7-A3B5-4F39-8AF8-3625F6BBE43D}</Project>
       <Name>Events</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
