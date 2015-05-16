@@ -28,9 +28,9 @@ namespace Edument.CQRS
         /// <summary>
         /// This constructor is most compatible with NUnit
         /// </summary>
-        /// <param name="assertAreEqual"></param>
-        /// <param name="assertFail"></param>
-        /// <param name="assertPass"></param>
+        /// <param name="assertAreEqual">For the assertAreEqual nUnit assertion, use <code>Assert.AreEqual</code></param>
+        /// <param name="assertFail">For the assertFail nUnit assertion, use <code>Assert.Fail</code></param>
+        /// <param name="assertPass">For the assertPass nUnit assertion, use <code>Assert.Pass</code></param>
         public BDDTest(AreEqualDelegate assertAreEqual, FailDelegate assertFail, PassDelegate assertPass)
         {
             AssertAreEqual = assertAreEqual;
@@ -38,6 +38,21 @@ namespace Edument.CQRS
             AssertPass = assertPass;
         }
 
+        /// <summary>
+        /// This constructor is most compatible with xUnit.
+        /// </summary>
+        /// <param name="assertAreEqual">For the assertAreEqual xUnit equivalent, use <code>Assert.Equal</code></param>
+        /// <param name="assertFail">For the assertFail xUnit equivalent, use <code>message => Assert.True(false, message)</code></param>
+        /// <remarks>
+        /// The following is a sample of how to call this constructor for xUnit:
+        /// <code>
+        ///         public SomethingTests() : base(Assert.Equal, message => Assert.True(false, message))
+        ///         {
+        ///             BDDTestSetup();
+        ///             testId = Guid.NewGuid();
+        ///         }
+        /// </code>
+        /// </remarks>
         public BDDTest(AreEqualDelegate assertAreEqual, FailDelegate assertFail)
             : this(assertAreEqual, assertFail, delegate { return; })
         {
