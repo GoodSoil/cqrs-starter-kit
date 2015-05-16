@@ -11,17 +11,6 @@ namespace CafeReadModels
         ISubscribeTo<FoodOrdered>,
         ISubscribeTo<FoodPrepared>
     {
-        public class TodoListItem
-        {
-            public int MenuNumber;
-            public string Description;
-        }
-
-        public class TodoListGroup
-        {
-            public Guid Tab;
-            public List<TodoListItem> Items;
-        }
 
         private List<TodoListGroup> todoList = new List<TodoListGroup>();
 

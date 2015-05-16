@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationDomain\ChefTodoList.cs" />
+    <Compile Include="ApplicationDomain\Domain.cs" />
+    <Compile Include="ApplicationDomain\OpenTabs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\CloseTab.cs" />
     <Compile Include="Tab\Exceptions.cs" />
@@ -55,6 +58,10 @@
     <Compile Include="Tab\TabAggregate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CafeReadModels\CafeReadModels.csproj">
+      <Project>{6f605353-edf1-4ec1-900c-4c55c105e24c}</Project>
+      <Name>CafeReadModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Events\Events.csproj">
       <Project>{36635EE7-A3B5-4F39-8AF8-3625F6BBE43D}</Project>
       <Name>Events</Name>

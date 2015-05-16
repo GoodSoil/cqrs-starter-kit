@@ -5,6 +5,6 @@ namespace CafeReadModels
 {
     public interface IChefTodoListQueries
     {
-        List<ChefTodoList.TodoListGroup> GetTodoList();
+        List<TodoListGroup> GetTodoList();
     }
 }
