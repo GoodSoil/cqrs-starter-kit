@@ -34,6 +34,7 @@ namespace CafeTests
             ISubscribeTo<TabOpened> handler = new EventHandler();
 
             // Act
+            Domain.Setup();
             Domain.Dispatcher.AddSubscriberFor<TabOpened>(handler);
             Domain.Dispatcher.SendCommand(command);
 
