@@ -14,24 +14,32 @@ namespace CafeTests
     [TestFixture]
     public class AddingEventHandlers
     {
-        [Test]
-        public void ShouldAddEventHandlers()
+        private static void Arrange(out OpenTab command, out TabOpened expectedEvent, out ISubscribeTo<TabOpened> handler)
         {
             // Arrange
             Guid testId = Guid.NewGuid();
-            var command = new OpenTab()
+            command = new OpenTab()
             {
                 Id = testId,
                 TableNumber = 5,
                 Waiter = "Bob"
             };
-            var expectedEvent = new TabOpened()
+            expectedEvent = new TabOpened()
             {
                 Id = testId,
                 TableNumber = 5,
                 Waiter = "Bob"
             };
-            ISubscribeTo<TabOpened> handler = new EventHandler();
+            handler = new EventHandler();
+        }
+
+        [Test]
+        public void ShouldAddEventHandlers()
+        {
+            ISubscribeTo<TabOpened> handler;
+            OpenTab command;
+            TabOpened expectedEvent;
+            Arrange(out command, out expectedEvent, out handler);
 
             // Act
             Domain.Setup();
