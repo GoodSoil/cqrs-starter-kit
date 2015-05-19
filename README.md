@@ -1,4 +1,7 @@
 # Edument CQRS and Intentful Testing Starter Kit
+#### A *Modified* Version
+
+> Available in two **GoodSoil** NuGet packages: [CQRS Lite](https://www.nuget.org/packages/GoodSoil.CQRS/) and [CQRS Lite BDD Infrastructure](https://www.nuget.org/packages/GoodSoil.CQRS.BDDInfrastructure/)
 
 ## What is this?
 
