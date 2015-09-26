@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Something\Exceptions.cs" />
+    <Compile Include="Something\MakeASubsequentThingHappen.cs" />
     <Compile Include="Something\MakeSomethingHappen.cs" />
     <Compile Include="Something\SomethingAggregate.cs" />
   </ItemGroup>

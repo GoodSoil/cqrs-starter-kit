@@ -10,8 +10,11 @@ namespace YourDomain.Something
 {
     public class SomethingAggregate : Aggregate,
         IHandleCommand<MakeSomethingHappen>,
-        IApplyEvent<SomethingHappened>
+        IApplyEvent<SomethingHappened>,
+        IHandleCommand<MakeASubsequentThingHappen>,
+        IApplyEvent<SomethingExtraHappened>
     {
+        private string What { get; set; }
         private bool alreadyHappened;
 
         public IEnumerable Handle(MakeSomethingHappen c)
@@ -29,6 +32,24 @@ namespace YourDomain.Something
         public void Apply(SomethingHappened e)
         {
             alreadyHappened = true;
+            What = e.What;
+        }
+
+        public IEnumerable Handle(MakeASubsequentThingHappen c)
+        {
+            if (!alreadyHappened)
+                throw new SomethingMustHappenFirst();
+
+            yield return new SomethingExtraHappened
+            {
+                Id = c.Id,
+                Summary = What + " then " + c.Next
+            };
+        }
+
+        public void Apply(SomethingExtraHappened e)
+        {
+            What = e.Summary;
         }
     }
 }

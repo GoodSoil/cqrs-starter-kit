@@ -8,4 +8,7 @@ namespace YourDomain.Something
     public class SomethingCanOnlyHappenOnce : Exception
     {
     }
+    public class SomethingMustHappenFirst : Exception
+    {
+    }
 }

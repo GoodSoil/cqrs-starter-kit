@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edument.CQRS", "Edument.CQRS\Edument.CQRS.csproj", "{D2BAB57D-225D-4F4C-9410-ED39495A8FE0}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourDomainTests", "YourDomainTests\YourDomainTests.csproj", "{4306B621-323B-4574-BFBF-2D002491AE1E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edument.CQRS.BDDInfrastructure", "Edument.CQRS.BDDInfrastructure\Edument.CQRS.BDDInfrastructure.csproj", "{C8613BA7-A8DC-4F99-BAAD-2A2B44A16D47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edument.CQRS.EntityFramework", "Edument.CQRS.EntityFramework\Edument.CQRS.EntityFramework.csproj", "{92F2FE68-6E19-47A8-AAC0-83E9C9B90780}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C8613BA7-A8DC-4F99-BAAD-2A2B44A16D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8613BA7-A8DC-4F99-BAAD-2A2B44A16D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8613BA7-A8DC-4F99-BAAD-2A2B44A16D47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F2FE68-6E19-47A8-AAC0-83E9C9B90780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F2FE68-6E19-47A8-AAC0-83E9C9B90780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F2FE68-6E19-47A8-AAC0-83E9C9B90780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F2FE68-6E19-47A8-AAC0-83E9C9B90780}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

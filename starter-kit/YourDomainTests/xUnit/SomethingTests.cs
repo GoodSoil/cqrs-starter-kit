@@ -53,5 +53,65 @@ namespace YourDomainTests.xUnit
                 }),
                 ThenFailWith<SomethingCanOnlyHappenOnce>());
         }
+
+        [Fact]
+        public void ASubsequentThingHapensAfterSomething()
+        {
+            Test(
+                Given(new SomethingHappened
+                {
+                    Id = testId,
+                    What = "Boom!"
+                }),
+                When(new MakeASubsequentThingHappen
+                {
+                    Id = testId,
+                    Next = "{smoke}"
+                }),
+                Then(new SomethingExtraHappened
+                {
+                    Id = testId,
+                    Summary = "Boom! then {smoke}"
+                }));
+        }
+
+        [Fact]
+        public void ASubsequentThingCanHappenMoreThanOnceAfterSomething()
+        {
+            Test(
+                Given(new SomethingHappened
+                {
+                    Id = testId,
+                    What = "Boom!"
+                },
+                new SomethingExtraHappened
+                {
+                    Id = testId,
+                    Summary = "Boom! then {smoke}"
+                }),
+                When(new MakeASubsequentThingHappen
+                {
+                    Id = testId,
+                    Next = "--silence--"
+                }),
+                Then(new SomethingExtraHappened
+                {
+                    Id = testId,
+                    Summary = "Boom! then {smoke} then --silence--"
+                }));
+        }
+
+        [Fact]
+        public void SomethingMustHappenBeforeASubsequentThing()
+        {
+            Test(
+                Given(),
+                When(new MakeASubsequentThingHappen
+                {
+                    Id = testId,
+                    Next = "{smoke}"
+                }),
+                ThenFailWith<SomethingMustHappenFirst>());
+        }
     }
 }
