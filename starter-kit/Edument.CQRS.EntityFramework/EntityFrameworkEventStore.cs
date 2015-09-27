@@ -44,6 +44,7 @@ namespace Edument.CQRS.EntityFramework
             {
                 var events = from data in context.Events
                              where data.AggregateId == id
+                             orderby data.SequenceNumber
                              select data;
                 foreach (var item in events)
                 {
@@ -60,7 +61,7 @@ namespace Edument.CQRS.EntityFramework
                 if (existingAggregate == null)
                     context.Aggregates.Add(new Aggregate { Id = id, Type = typeof(TAggregate).AssemblyQualifiedName });
                 foreach (var item in newEvents)
-                    context.Events.Add(new Event { AggregateId = id, Type = item.GetType().AssemblyQualifiedName, Body = SerializeEvent(item) });
+                    context.Events.Add(new Event { AggregateId = id, SequenceNumber = ++eventsLoaded, Type = item.GetType().AssemblyQualifiedName, Body = SerializeEvent(item) });
                 context.SaveChanges();
             }
         }
